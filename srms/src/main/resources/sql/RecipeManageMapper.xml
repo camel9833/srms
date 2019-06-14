@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="RecipeManageMapper">
+
+
+	<select id="selectRecipeGroup" resultType="com.company.VO.RecipeManageVO">	
+	select "rpGrpNm" as rpGrpNm
+				 , "rpGrpDesc" as rpGrpDesc
+				 , "rpCnt" as rpCnt
+				 , "sysRegId" as sysRegId
+				 , to_char("sysRegDate",'yyyy-mm-dd hh24:mm:ss') as sysRegDate
+	from recipe_grp_info
+	order by rpGrpNm
+	limit 10 offset #{pageNo}
+	</select>	
+
+	<select id="selectRecipeGrpTotalCnt" resultType="int">	
+	select count(1) as totalCount 
+	from recipe_grp_info
+	</select>
+
+</mapper> 
